@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OFAC Compliance Search</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <div class="logo">
+            <svg
+              class="logo-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg>
+            <div class="logo-text">
+              <h1>OFAC Search</h1>
+              <span class="subtitle">Compliance Screening Tool</span>
+            </div>
+          </div>
+          <div class="data-status" id="dataStatus">
+            <span class="status-indicator" id="statusIndicator"></span>
+            <span class="status-text" id="statusText">Loading...</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Search Form -->
+        <section class="search-section">
+          <form id="searchForm" class="search-form">
+            <!-- Name Fields - Standard OFAC format -->
+            <div class="form-group-row three-col">
+              <div class="form-group">
+                <label for="firstName">First Name <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="First name"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="form-group">
+                <label for="middleName">Middle <span class="optional">(Optional)</span></label>
+                <input
+                  type="text"
+                  id="middleName"
+                  name="middleName"
+                  placeholder="Middle"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Last name"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <!-- Additional Info Toggle -->
+            <button type="button" class="toggle-btn" id="toggleAdvanced">
+              <span>Additional Search Fields</span>
+              <svg
+                class="chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+
+            <!-- Clear Form Button (positioned in form) -->
+            <div class="form-actions-row">
+              <button type="button" class="clear-form-btn" id="clearFormBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+                Clear Form
+              </button>
+            </div>
+
+            <!-- Advanced Fields -->
+            <div class="advanced-fields" id="advancedFields">
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="dob">Date of Birth</label>
+                  <input type="date" id="dob" name="dob" />
+                </div>
+                <div class="form-group">
+                  <label for="idNumber">ID Number</label>
+                  <input
+                    type="text"
+                    id="idNumber"
+                    name="idNumber"
+                    placeholder="SSN, Passport, etc."
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="address">Street Address</label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  placeholder="Street address"
+                  autocomplete="off"
+                />
+              </div>
+
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    placeholder="City"
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="state">State/Province</label>
+                  <input
+                    type="text"
+                    id="state"
+                    name="state"
+                    placeholder="State"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="country">Country</label>
+                <input
+                  type="text"
+                  id="country"
+                  name="country"
+                  placeholder="Country"
+                  autocomplete="off"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="searchType">Type</label>
+                <select id="searchType" name="searchType">
+                  <option value="all">All Types</option>
+                  <option value="Individual">Individual</option>
+                  <option value="Entity">Entity</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Search Button -->
+            <button type="submit" class="search-btn" id="searchBtn">
+              <svg
+                class="btn-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35" />
+              </svg>
+              <span>Search OFAC List</span>
+            </button>
+          </form>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection">
+          <div class="results-header">
+            <h2>Search Results</h2>
+            <button type="button" class="clear-btn" id="clearResults">
+              Clear
+            </button>
+          </div>
+          <div class="results-content" id="resultsContent">
+            <!-- Results will be populated here -->
+          </div>
+        </section>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+          <div class="loader">
+            <div class="loader-spinner"></div>
+            <span class="loader-text">Searching...</span>
+          </div>
+        </div>
+      </main>
+
+      <!-- History Section -->
+      <section class="history-section" id="historySection">
+        <div class="history-header">
+          <h3>Recent Searches</h3>
+          <button type="button" class="clear-btn small" id="clearHistory">
+            Clear All
+          </button>
+        </div>
+        <div class="history-list" id="historyList">
+          <!-- History items will be populated here -->
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <button type="button" class="footer-btn" id="updateDataBtn">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M23 4v6h-6" />
+              <path d="M1 20v-6h6" />
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10" />
+              <path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14" />
+            </svg>
+            <span>Update Data</span>
+          </button>
+          <span class="footer-info">
+            <span id="entryCount">0</span> entries | Last updated:
+            <span id="lastUpdate">Never</span>
+          </span>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Print Certificate Template (Hidden) -->
+    <div id="printTemplate" class="print-template">
+      <div class="certificate">
+        <div class="certificate-header">
+          <div class="cert-logo">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg>
+          </div>
+          <h1>OFAC COMPLIANCE CERTIFICATE</h1>
+          <p class="cert-subtitle">
+            Specially Designated Nationals (SDN) Screening Report
+          </p>
+        </div>
+
+        <div class="certificate-body">
+          <div class="cert-status passed" id="certStatus">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+            <span>NO MATCH FOUND - CLEARED</span>
+          </div>
+
+          <div class="cert-details">
+            <h2>Customer Information Searched</h2>
+            <table class="cert-table">
+              <tr>
+                <td class="label">Full Name:</td>
+                <td class="value" id="certName">-</td>
+              </tr>
+              <tr>
+                <td class="label">Date of Birth:</td>
+                <td class="value" id="certDOB">-</td>
+              </tr>
+              <tr>
+                <td class="label">Address:</td>
+                <td class="value" id="certAddress">-</td>
+              </tr>
+              <tr>
+                <td class="label">ID Number:</td>
+                <td class="value" id="certID">-</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="cert-search-info">
+            <h2>Search Details</h2>
+            <table class="cert-table">
+              <tr>
+                <td class="label">Search Date/Time:</td>
+                <td class="value" id="certTimestamp">-</td>
+              </tr>
+              <tr>
+                <td class="label">SDN List Date:</td>
+                <td class="value" id="certListDate">-</td>
+              </tr>
+              <tr>
+                <td class="label">Entries Searched:</td>
+                <td class="value" id="certEntryCount">-</td>
+              </tr>
+              <tr>
+                <td class="label">Match Threshold:</td>
+                <td class="value">85%</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="cert-disclaimer">
+            <h3>Compliance Disclaimer</h3>
+            <p>
+              This search was conducted against the U.S. Department of
+              Treasury's Office of Foreign Assets Control (OFAC) Specially
+              Designated Nationals (SDN) list. A "NO MATCH FOUND" result
+              indicates that no entries in the SDN list matched the search
+              criteria at or above the specified threshold at the time of
+              search. This certificate does not guarantee clearance under OFAC
+              regulations. OFAC lists are updated frequently, and businesses
+              should maintain ongoing compliance procedures. This report is for
+              record-keeping purposes only.
+            </p>
+          </div>
+
+          <div class="cert-signature">
+            <div class="sig-line">
+              <div class="sig-space"></div>
+              <p>Authorized Representative Signature</p>
+            </div>
+            <div class="sig-line">
+              <div class="sig-space"></div>
+              <p>Date</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="certificate-footer">
+          <p>Generated by OFAC Compliance Search Extension</p>
+          <p class="cert-id">Reference ID: <span id="certRefId">-</span></p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

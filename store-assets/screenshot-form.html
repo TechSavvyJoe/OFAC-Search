@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OFAC Search Screenshot</title>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="screenshot-styles.css">
+</head>
+<body class="screenshot-mode">
+    <div class="screenshot-container">
+        <!-- COPIED POPUP HTML CONTENT -->
+        <div class="container">
+          <!-- Header -->
+          <header class="header">
+            <div class="header-content">
+              <div class="title-row">
+                <div class="logo">
+                  <!-- Use image directly for screenshot -->
+                  <img src="icons/icon48.png" style="width:28px; height:28px;">
+                </div>
+                <div class="title-text">
+                  <h1>OFAC Compliance Search</h1>
+                  <span class="subtitle">Official SDN List Screening</span>
+                </div>
+              </div>
+            </div>
+          </header>
+    
+          <!-- Main Content -->
+          <main class="main-content">
+            <!-- Search Section -->
+            <section class="search-section" id="searchSection">
+              <form id="searchForm" class="search-form" onsubmit="return false;">
+                <div class="form-group-row three-col">
+                  <div class="form-group">
+                    <label for="firstName">First Name <span class="required">*</span></label>
+                    <input type="text" id="firstName" name="firstName" placeholder="First Name" value="John" autocomplete="off" />
+                  </div>
+                  <div class="form-group">
+                    <label for="middleName">Middle</label>
+                    <input type="text" id="middleName" name="middleName" placeholder="Middle" value="" autocomplete="off" />
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name <span class="required">*</span></label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Last Name" value="Doe" autocomplete="off" />
+                  </div>
+                </div>
+    
+                <!-- Quick Options -->
+                <div class="quick-options">
+                  <button type="button" class="link-btn" id="toggleAdvanced">
+                    <span>Advanced Search Options</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                  <div class="form-actions-row">
+                    <button type="button" class="clear-form-btn" id="clearFormBtn">Clear Form</button>
+                  </div>
+                </div>
+    
+                <!-- Advanced Fields -->
+                <div class="advanced-fields" id="advancedFields">
+                  <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" />
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" placeholder="Street address" />
+                  </div>
+    
+                  <div class="form-group-row">
+                    <div class="form-group">
+                      <label for="city">City</label>
+                      <input type="text" id="city" name="city" placeholder="City" />
+                    </div>
+                    <div class="form-group">
+                      <label for="state">State/Province</label>
+                      <input type="text" id="state" name="state" placeholder="State" />
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- Search Button -->
+                <button type="button" class="search-btn">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="M21 21l-4.35-4.35" />
+                  </svg>
+                  <span>Search OFAC List</span>
+                </button>
+              </form>
+            </section>
+    
+            <section class="results-section" id="resultsSection" style="display:none"></section>
+          </main>
+    
+          <!-- History Section -->
+          <section class="history-section" id="historySection">
+            <div class="history-header">
+              <h3>Recent Searches</h3>
+              <button type="button" class="clear-btn small">Clear All</button>
+            </div>
+            <div class="history-list">
+                <div class="history-item">
+                    <div class="history-info">
+                        <span class="history-name">Michael Smith</span>
+                        <span class="history-meta">Individual • Today</span>
+                    </div>
+                    <span class="status-badge status-clear">Clear</span>
+                </div>
+                <div class="history-item">
+                    <div class="history-info">
+                        <span class="history-name">Test Corp LLC</span>
+                        <span class="history-meta">Entity • Yesterday</span>
+                    </div>
+                    <span class="status-badge status-clear">Clear</span>
+                </div>
+            </div>
+          </section>
+    
+          <!-- Footer -->
+          <footer class="footer">
+            <div class="footer-content">
+              <button type="button" class="footer-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M23 4v6h-6" />
+                  <path d="M1 20v-6h6" />
+                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10" />
+                  <path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14" />
+                </svg>
+                <span>Update Data</span>
+              </button>
+              <span class="footer-info">
+                <span>19,156</span> entries | Last updated:
+                <span>Today</span>
+              </span>
+            </div>
+          </footer>
+        </div>
+    </div>
+</body>
+</html>

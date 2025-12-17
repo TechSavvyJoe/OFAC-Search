@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="bgGrad48" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Blue circle background -->
+  <circle cx="24" cy="24" r="22" fill="url(#bgGrad48)"/>
+  
+  <!-- White shield -->
+  <path d="M24 8 L38 13 L38 21 C38 31 24 40 24 40 C24 40 10 31 10 21 L10 13 Z" 
+        fill="white" stroke="#1e40af" stroke-width="1"/>
+  
+  <!-- Green checkmark -->
+  <path d="M17 22 L21 27 L31 16" 
+        stroke="#10b981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

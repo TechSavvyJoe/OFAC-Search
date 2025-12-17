@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "OFAC Compliance Search",
+  "version": "1.0.0",
+  "description": "Fast, reliable OFAC SDN list screening for car dealerships. Instant compliance checks with printable clearance certificates.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "OFAC Compliance Search"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["storage", "alarms"],
+  "host_permissions": [
+    "https://www.treasury.gov/*",
+    "https://sanctionssearch.ofac.treas.gov/*",
+    "https://data.opensanctions.org/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

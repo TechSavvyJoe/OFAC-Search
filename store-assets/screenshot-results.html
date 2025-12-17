@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OFAC Search Results Screenshot</title>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="screenshot-styles.css">
+    <style>
+        /* Force results view styles */
+        .search-section { display: none !important; }
+        .history-section { display: none !important; }
+        .results-section { display: block !important; flex: 1; overflow-y: auto; }
+        .result-card.safe { border-left: 4px solid #10b981; }
+        .status-header.safe { background: #d1fae5; color: #065f46; }
+        .status-icon.safe { color: #059669; }
+    </style>
+</head>
+<body class="screenshot-mode">
+    <div class="screenshot-container">
+        <div class="container">
+          <!-- Header -->
+          <header class="header">
+            <div class="header-content">
+              <div class="title-row">
+                <div class="logo">
+                  <img src="icons/icon48.png" style="width:28px; height:28px;">
+                </div>
+                <div class="title-text">
+                  <h1>OFAC Compliance Search</h1>
+                  <span class="subtitle">Official SDN List Screening</span>
+                </div>
+              </div>
+            </div>
+          </header>
+    
+          <!-- Main Content -->
+          <main class="main-content" style="padding-bottom: 0;">
+            
+            <!-- Results Section (Visible) -->
+            <section class="results-section" id="resultsSection" style="display:block">
+              <div class="results-header">
+                <h2>Search Results</h2>
+                <button type="button" class="clear-btn">New Search</button>
+              </div>
+              <div class="results-content">
+                <!-- MOCK RESULT: CLEAN -->
+                <div class="result-card safe">
+                    <div class="status-header safe">
+                      <div class="status-icon safe">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                      </div>
+                      <h3>No Match Found</h3>
+                    </div>
+                    <div class="result-details">
+                      <p><strong>Name Searched:</strong> Robert J. Anderson</p>
+                      <p><strong>Type:</strong> Individual</p>
+                      <div class="match-info">
+                        <span class="match-label">Status:</span>
+                        <span class="match-value safe">CLEARED</span>
+                      </div>
+                      <p class="summary-text">
+                        No matches were found in the OFAC SDN list for "Robert J. Anderson". This individual does not appear on the current sanctions list.
+                      </p>
+                      <div class="meta-info">
+                        <p><strong>Entries Searched:</strong> 19,156</p>
+                        <p><strong>Search Time:</strong> Dec 17, 2025, 1:45 PM</p>
+                      </div>
+                    </div>
+                    <div class="result-actions">
+                      <button type="button" class="print-btn" style="background:#28a745; color:white; border:none;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                          <rect x="6" y="14" width="12" height="8"></rect>
+                        </svg>
+                        Print Certificate
+                      </button>
+                    </div>
+                  </div>
+
+              </div>
+            </section>
+          </main>
+    
+          <!-- Footer -->
+          <footer class="footer">
+            <div class="footer-content">
+              <button type="button" class="footer-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M23 4v6h-6" />
+                  <path d="M1 20v-6h6" />
+                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10" />
+                  <path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14" />
+                </svg>
+                <span>Update Data</span>
+              </button>
+              <span class="footer-info">
+                <span>19,156</span> entries | Last updated:
+                <span>Today</span>
+              </span>
+            </div>
+          </footer>
+        </div>
+    </div>
+</body>
+</html>

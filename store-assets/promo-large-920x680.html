@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>OFAC Search - Large Promo Tile (920x680)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 920px;
+      height: 680px;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a0a0b 0%, #0f172a 50%, #1e3a5f 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Grid background */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      padding: 60px;
+      position: relative;
+      z-index: 1;
+    }
+    .icon {
+      flex-shrink: 0;
+    }
+    .shield {
+      width: 200px;
+      height: 200px;
+      filter: drop-shadow(0 20px 40px rgba(59,130,246,0.3));
+    }
+    .content h1 {
+      font-size: 48px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .content .subtitle {
+      font-size: 20px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+    }
+    .feature svg {
+      width: 20px;
+      height: 20px;
+      color: #10b981;
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #3b82f6, #1e40af);
+      border-radius: 25px;
+      font-size: 14px;
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">
+      <svg class="shield" viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#3b82f6"/>
+            <stop offset="100%" style="stop-color:#1e40af"/>
+          </linearGradient>
+        </defs>
+        <path d="M50 5 L90 20 L90 45 C90 70 50 95 50 95 C50 95 10 70 10 45 L10 20 Z" 
+              fill="url(#shieldGrad)"/>
+        <path d="M35 48 L45 58 L65 38" 
+              stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
+    <div class="content">
+      <h1>OFAC Compliance<br>Search</h1>
+      <p class="subtitle">Professional SDN List Screening Tool</p>
+      <div class="features">
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Instant Name Matching Against 19,000+ Entries</span>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Printable Compliance Certificates</span>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Daily Automatic Data Updates</span>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Search History & Audit Trail</span>
+        </div>
+      </div>
+      <div class="badge">Free Chrome Extension</div>
+    </div>
+  </div>
+</body>
+</html>

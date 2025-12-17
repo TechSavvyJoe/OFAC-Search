@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <linearGradient id="bgGrad16" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Blue circle background -->
+  <circle cx="8" cy="8" r="7.5" fill="url(#bgGrad16)"/>
+  
+  <!-- White shield -->
+  <path d="M8 2 L13 4 L13 7 C13 11 8 14 8 14 C8 14 3 11 3 7 L3 4 Z" 
+        fill="white"/>
+  
+  <!-- Green checkmark -->
+  <path d="M5.5 7.5 L7 9 L10.5 5.5" 
+        stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
