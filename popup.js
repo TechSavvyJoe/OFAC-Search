@@ -172,7 +172,6 @@ async function loadDataStatus() {
 async function loadSDNEntries() {
   try {
     sdnEntries = await getAllSDNEntries();
-    console.log(`Loaded ${sdnEntries.length} SDN entries`);
 
     if (sdnEntries.length > 0) {
       showStatus("ready", `${sdnEntries.length.toLocaleString()} entries`);
@@ -896,8 +895,6 @@ function loadCachedFormData() {
       elements.advancedFields.classList.add("show");
       elements.toggleAdvanced.classList.add("active");
     }
-
-    console.log("Restored cached form data");
   } catch (error) {
     console.warn("Failed to load cached form data:", error);
   }

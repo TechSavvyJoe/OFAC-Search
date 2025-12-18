@@ -14,8 +14,6 @@ const SDN_CSV_URL =
  * @returns {Promise<string>} - Raw CSV text
  */
 async function fetchSDNCSV() {
-  console.log("Fetching OFAC SDN list from OpenSanctions...");
-
   const response = await fetch(SDN_CSV_URL, {
     method: "GET",
     headers: {
@@ -28,7 +26,6 @@ async function fetchSDNCSV() {
   }
 
   const csvText = await response.text();
-  console.log(`Received ${csvText.length} characters of CSV data`);
 
   return csvText;
 }
@@ -119,8 +116,6 @@ function parseSDNCSV(csvText) {
   const lines = csvText.split("\n");
   const entries = [];
 
-  console.log(`Parsing ${lines.length} lines from OpenSanctions CSV...`);
-
   // Skip header line
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i].trim();
@@ -196,9 +191,6 @@ function parseSDNCSV(csvText) {
     }
   }
 
-  console.log(
-    `Successfully parsed ${entries.length} SDN entries from OpenSanctions`
-  );
   return entries;
 }
 

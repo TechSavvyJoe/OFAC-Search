@@ -22,11 +22,7 @@
     "type": "module"
   },
   "permissions": ["storage", "alarms"],
-  "host_permissions": [
-    "https://www.treasury.gov/*",
-    "https://sanctionssearch.ofac.treas.gov/*",
-    "https://data.opensanctions.org/*"
-  ],
+  "host_permissions": ["https://data.opensanctions.org/*"],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   }

@@ -21,8 +21,6 @@ const UPDATE_INTERVAL_HOURS = 24;
  * Initialize the extension on first install
  */
 chrome.runtime.onInstalled.addListener(async (details) => {
-  console.log("OFAC Search Extension installed/updated:", details.reason);
-
   if (details.reason === "install") {
     // First time install - download SDN data
     await initializeSDNData();
@@ -39,7 +37,6 @@ chrome.runtime.onInstalled.addListener(async (details) => {
  * Handle extension startup
  */
 chrome.runtime.onStartup.addListener(async () => {
-  console.log("OFAC Search Extension started");
   await checkAndUpdateSDNData();
   await setupUpdateAlarm();
 });
@@ -49,7 +46,6 @@ chrome.runtime.onStartup.addListener(async () => {
  */
 chrome.alarms.onAlarm.addListener(async (alarm) => {
   if (alarm.name === UPDATE_ALARM_NAME) {
-    console.log("Running scheduled SDN data update");
     await checkAndUpdateSDNData();
   }
 });
@@ -86,8 +82,6 @@ async function setupUpdateAlarm() {
     delayInMinutes: UPDATE_INTERVAL_HOURS * 60,
     periodInMinutes: UPDATE_INTERVAL_HOURS * 60,
   });
-
-  console.log(`Update alarm set for every ${UPDATE_INTERVAL_HOURS} hours`);
 }
 
 /**
@@ -99,7 +93,6 @@ async function initializeSDNData() {
     await saveSetting("updateStatus", "downloading");
     await saveSetting("lastError", null);
 
-    console.log("Downloading SDN data from Treasury.gov...");
     const result = await downloadAndParseSDN();
 
     // Store entries
@@ -111,8 +104,6 @@ async function initializeSDNData() {
     await saveSetting("publishDate", result.publishDate);
     await saveSetting("entryCount", result.count);
     await saveSetting("updateStatus", "complete");
-
-    console.log(`SDN data initialized: ${result.count} entries`);
 
     return { success: true, count: result.count };
   } catch (error) {
@@ -134,7 +125,6 @@ async function checkAndUpdateSDNData() {
 
     // Check if we need to update
     if (!needsUpdate(lastUpdate) && count > 0) {
-      console.log("SDN data is up to date");
       return { success: true, updated: false };
     }
 
@@ -154,7 +144,6 @@ async function performSDNUpdate() {
     await saveSetting("updateStatus", "downloading");
     await saveSetting("lastError", null);
 
-    console.log("Downloading SDN data from Treasury.gov...");
     const result = await downloadAndParseSDN();
 
     // Clear old entries and store new ones
@@ -166,8 +155,6 @@ async function performSDNUpdate() {
     await saveSetting("publishDate", result.publishDate);
     await saveSetting("entryCount", result.count);
     await saveSetting("updateStatus", "complete");
-
-    console.log(`SDN data updated: ${result.count} entries`);
 
     return { success: true, updated: true, count: result.count };
   } catch (error) {
