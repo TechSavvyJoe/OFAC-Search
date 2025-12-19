@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "OFAC Compliance Search",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Fast, reliable OFAC SDN list screening for car dealerships. Instant compliance checks with printable clearance certificates.",
   "icons": {
     "16": "icons/icon16.png",
@@ -21,7 +21,7 @@
     "service_worker": "background.js",
     "type": "module"
   },
-  "permissions": ["storage", "alarms"],
+  "permissions": ["alarms"],
   "host_permissions": ["https://data.opensanctions.org/*"],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
